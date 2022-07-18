@@ -133,5 +133,10 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    public void updatePwd(User user){
+        String sql = "update t_user set upass=#{upass} where uno=#{uno}";
+        JdbcFront jf = new JdbcFront();
+        int update = jf.update(sql,user);
+    }
 
 }

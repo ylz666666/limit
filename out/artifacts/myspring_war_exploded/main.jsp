@@ -51,12 +51,26 @@
             text-decoration:none;
         }
     </style>
+    <script>
+        window.onload = function () {
+            document.getElementById("logout").onclick = function () {
+                var b = confirm("是否需要注销账号");
+                if(b){
+                    location.href = "logout.do";
+                }
+            }
+            // document.getElementById("setPass").onclick = function () {
+            //     location.href = "setPassword.jsp";
+            // }
+        }
+
+    </script>
 </head>
 <body>
 <div class="body">
     <div class="top">
         <div class="title">XXXXX人员信息管理系统</div>
-        <div class="user">欢迎 ${sessionScope.get("loginUser").getUname()} 进入</div>
+        <div class="user">欢迎 ${sessionScope.get("loginUser").getUname()} 进入 <a id="logout">[注销]</a></div>
     </div>
     <div class="left">
         <ul>
@@ -86,6 +100,9 @@
             </li>
             <li>
                 系统管理
+                <ul>
+                    <li id="setPass"><a href="setPassword.jsp">修改密码</a></li>
+                </ul>
             </li>
         </ul>
     </div>

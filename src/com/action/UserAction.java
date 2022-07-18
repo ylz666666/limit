@@ -4,6 +4,7 @@ import com.domain.PageInfo;
 import com.domain.User;
 import com.service.UserService;
 import com.service.impl.UserServiceImpl;
+import com.sun.deploy.net.HttpRequest;
 import mymvc.ModelAndView;
 import mymvc.RequestMapping;
 import mymvc.RequestParam;
@@ -19,6 +20,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -251,7 +253,32 @@ public class UserAction {
             out.close();
     }
 
+    //注销
+    @RequestMapping("logout.do")
+    public String logout(HttpServletRequest request){
+        //清除session
+        HttpSession session = request.getSession();
+        //session失效 并跳转页面
+        session.invalidate();
+        return "redirect:index.jsp";//没有传参数一般都是重定向
+    }
 
-
+    //修改密码
+    @RequestMapping("setPassword.do")
+    @ResponseBody
+    public String setPass(@RequestParam("opass") String opass,@RequestParam("npass") String npass,@RequestParam("upass")String upass,HttpServletRequest request){
+        //先判断旧密码输入是否正确
+        User user = (User)request.getSession().getAttribute("loginUser");
+        String pass = user.getUpass();
+        if(pass.equals(opass)==false){
+            return "原密码输入不正确";
+        }
+        if(upass.equals(npass)==false){
+            return "两次输入的密码有误";
+        }
+        user.setUpass(upass);
+        service.updatePwd(user);
+        return "修改密码成功";
+    }
 
 }

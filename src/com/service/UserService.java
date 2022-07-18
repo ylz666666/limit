@@ -31,4 +31,8 @@ public interface UserService {
 
     //导入多条
     void importUsers(List<User> user);
+
+    //修改密码
+    void updatePwd(User user);
+
 }

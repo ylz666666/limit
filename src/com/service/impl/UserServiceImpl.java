@@ -95,4 +95,8 @@ public class UserServiceImpl implements UserService {
             dao.saveUser(user);
         }
     }
+    public void updatePwd(User user){
+       dao.updatePwd(user);
+
+    }
 }

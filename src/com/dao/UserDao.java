@@ -30,4 +30,6 @@ public interface UserDao {
 //    //添加多个 直接在服务层处理 循环多次调用添加一个的方法
 //    void importUsers(List<User> users);
 
+    //修改密码
+    void updatePwd(User user);
 }
