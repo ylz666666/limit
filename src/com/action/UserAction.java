@@ -70,7 +70,6 @@ public class UserAction {
         mv.addAttribute("page",page);
         mv.addAttribute("row",row);
         mv.addAttribute("pageInfo",pageInfo);
-        System.out.println("uno"+uno+"uname"+uname+"page"+page+"row"+row+"sex"+sex);
         return mv;
     }
 

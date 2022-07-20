@@ -89,23 +89,23 @@
                 let sexVal = document.getElementById("selectSex").value;
                 let showVal = document.getElementById("showPage").value;
                 let curVal = document.getElementById("pageSelectBtn").value;
-                console.log(unoVal,unameVal,sexVal,showVal,curVal);
                 let url = "userList.do?uno="+unoVal+"&uname="+unameVal+"&sex="+sexVal+"&page="+curVal+"&row="+showVal;
-                console.log(url);
                 location.href = url;
             }
             //绑定事件 6个
             //查询按钮
             let query = document.getElementById("query");
             query.onclick = function () {
+                document.getElementById("pageSelectBtn").value = 1;
                 loadData();
             }
             //清除按钮
             let clearbtn = document.getElementById("clearbtn");
             clearbtn.onclick = function () {
+                //清空其他查询条件
                 document.getElementById("unoBtn").value="";
                 document.getElementById("unameBtn").value="";
-                //清空其他查询条件
+                document.getElementById("selectSex").value = '';
                 loadData();
             }
 
@@ -217,7 +217,7 @@
 
 <body>
 <input type="hidden" id="maxPage" value="${requestScope.pageInfo.maxPage}" />
-<input type="hidden" id="uno" value="${requestScope.uno}" />
+<%--<input type="hidden" id="uno" value="${requestScope.uno}" />--%>
 <input type="hidden" id="row" value="${requestScope.row}" />
 <input type="hidden" id="page" value="${requestScope.page}" />
 <input type="hidden" id="sex" value="${requestScope.sex}" />

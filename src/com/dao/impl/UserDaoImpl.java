@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDao {
         }
         String uname = (String)param.get("uname");
         if(uname!=null&&!"".equals(uname)){
-            sb.append(" and uname=#{uname} ");
+            sb.append(" and uname like concat(#{uname},'%') ");
         }
         String sex =(String) param.get("sex");
         if(sex!=null&&!"".equals(sex)){
@@ -81,7 +81,6 @@ public class UserDaoImpl implements UserDao {
         sb.append(" order by createtime desc,uno  limit #{start},#{length}");
         JdbcFront jf = new JdbcFront();
         List<User> users = jf.selectList(sb.toString(), User.class, param);
-        System.out.println("过滤的地方:"+param.get("start")+param.get("length"));
         return users;
     }
 

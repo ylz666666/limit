@@ -13,6 +13,18 @@ public class Role implements Serializable {
 
     private List<Fn> fns ;
 
+    @Override
+    public String toString() {
+        return "Role{" +
+                "rno=" + rno +
+                ", rname='" + rname + '\'' +
+                ", description='" + description + '\'' +
+                ", yl1='" + yl1 + '\'' +
+                ", yl2='" + yl2 + '\'' +
+                ", fns=" + fns +
+                '}';
+    }
+
     public Integer getRno() {
         return rno;
     }
