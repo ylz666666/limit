@@ -94,6 +94,7 @@
                 rno.value = "";
                 rname.value="";
                 rdes.value = "";
+                page.value=1;
                 loadData();
             }
 

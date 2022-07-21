@@ -79,7 +79,7 @@
                     <dt>权限管理</dt>
                     <dd><a href="userList.do" target="right">用户管理</a></dd>
                     <dd><a href="roleList.jsp" target="right">角色管理</a></dd>
-                    <dd>功能管理</dd>
+                    <dd><a href="fnList.jsp" target="right">功能管理</a></dd>
                 </dl>
             </li>
             <li>

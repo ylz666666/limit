@@ -7,6 +7,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="myspring" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="fastjson-1.2.9" />
+          <element id="library" level="project" name="javax.servlet.jsp.jstl" />
+          <element id="library" level="project" name="activation-1.1.11" />
+        </element>
       </element>
     </root>
   </artifact>

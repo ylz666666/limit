@@ -106,6 +106,7 @@
                 document.getElementById("unoBtn").value="";
                 document.getElementById("unameBtn").value="";
                 document.getElementById("selectSex").value = '';
+                pageSelectBtn.value = 1;
                 loadData();
             }
 
