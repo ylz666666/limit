@@ -9,6 +9,7 @@ import com.domain.Role;
 import com.domain.User;
 import com.service.RoleService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +35,35 @@ public class RoleServiceImpl implements RoleService {
         List<Role> roles = dao.findRoleByPageAndFilter(param);
         return new PageInfo(maxPage,roles);
     }
+
+    //查找未分配的角色
+    public List<Role> findUnlink(Integer uno){
+        return dao.findUnlink(uno);
+    }
+    public List<Role> findlink(Integer uno){
+        return dao.findlink(uno);
+    }
+
+    public void setRole(Integer uno,String rnos){
+        //处理逻辑 1.首先把搜索到的全部删除 2.再重新添加
+        dao.delRole(uno);//删除所有
+        String[] split = rnos.split(",");
+        for (int i = 0; i <split.length ; i++) {
+            Map<String,Object> map = new HashMap();
+            map.put("uno",uno);
+            map.put("rno",split[i]);
+            dao.addRole(map);
+        }
+
+    }
+
+
+
+
+
+
+
+
 
     @Override
     public void saveUser(Role role) {

@@ -5,7 +5,9 @@ import com.domain.Fn;
 import com.service.FnService;
 import jdbc.JdbcFront;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FnServiceImpl implements FnService {
     private FnServiceImpl(){}
@@ -51,5 +53,21 @@ public class FnServiceImpl implements FnService {
         }
 
         return newFns;
+    }
+    public void setFn(Integer rno,String fnos){
+        //先删除
+        dao.delFn(rno);
+        //再添加
+        String[] split = fnos.split(",");
+        for (int i = 0; i <split.length ; i++) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("rno",rno);
+            map.put("fno",split[i]);
+            dao.addFn(map);
+        }
+
+    }
+    public List<Integer> getFnos(Integer rno){
+        return dao.getFnos(rno);
     }
 }

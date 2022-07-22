@@ -9,8 +9,11 @@ import com.service.impl.UserServiceImpl;
 import mymvc.ModelAndView;
 import mymvc.RequestMapping;
 import mymvc.RequestParam;
+import mymvc.ResponseBody;
 
+import java.sql.PreparedStatement;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RoleAction {
@@ -32,5 +35,22 @@ public class RoleAction {
         return pageInfo;
     }
 
+    //查询未分配的角色
+    @RequestMapping("findUnlink.do")
+    public List<Role> findUnlink(@RequestParam("uno") Integer uno){
+        return service.findUnlink(uno);
+    }
+    //查询yi分配的角色
+    @RequestMapping("findlink.do")
+    public List<Role> findlink(@RequestParam("uno") Integer uno){
+        return service.findlink(uno);
+    }
 
+    //修改数据
+    @RequestMapping("setRole.do")
+    @ResponseBody
+    public String setRole(@RequestParam("uno") Integer uno,@RequestParam("rnos") String rnos){
+        service.setRole(uno,rnos);
+        return "保存成功";
+    }
 }

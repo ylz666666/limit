@@ -272,7 +272,8 @@
                     <td>${user.sex}</td>
                     <td>
                         <a id="edit" href="javascript:edit(${user.uno})">编辑</a> |
-                        <a id="delete" href="javascript:del(${user.uno})">删除</a>
+                        <a id="delete" href="javascript:del(${user.uno})">删除</a>|
+                        <a href="setRole.jsp?uno=${user.uno}&truename=${user.truename}">分配角色</a>
                     </td>
                 </tr>
             </c:forEach>

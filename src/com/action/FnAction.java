@@ -36,4 +36,17 @@ public class FnAction {
     public void fnUpdate(Fn fn){
         service.fnUpdate(fn);
     }
+
+    @RequestMapping("setFn.do")
+    @ResponseBody
+    public String setFn(@RequestParam("rno") Integer rno,@RequestParam("fnos") String fnos){
+        service.setFn(rno,fnos);
+        return "保存成功";
+    }
+
+    //获取对应功能
+    @RequestMapping("getFnos.do")
+    public List<Integer> getFnos(@RequestParam("rno") Integer rno){
+        return service.getFnos(rno);
+    }
 }

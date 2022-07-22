@@ -9,4 +9,6 @@ public interface FnService {
     void addOne(Fn fn);
     void fnDelete(Integer fno);
     void fnUpdate(Fn fn);
+    public void setFn(Integer rno,String fnos);
+    public List<Integer> getFnos(Integer rno);
 }

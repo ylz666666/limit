@@ -64,9 +64,52 @@ public class RoleDaoImpl implements RoleDao {
         sb.append(" order by createtime,rno limit #{start},#{row}");
         JdbcFront jf = new JdbcFront();
         List<Role> roles = jf.selectList(sb.toString(), Role.class, param);
-        System.out.println("老规矩"+sb+"编号"+rno+"开始:"+start+"row"+row+"page:"+page);
         return roles;
     }
+
+    //查找未分配的角色
+    public List<Role> findUnlink(Integer uno){
+        String sql = "select * from t_role where rno not in (select rno from t_user_role where uno=#{uno})";
+        JdbcFront jf = new JdbcFront();
+        List<Role> roles = jf.selectList(sql, Role.class, uno);
+        return roles;
+    };
+    //查找已分配的角色
+    public List<Role> findlink(Integer uno){
+        String sql = "select * from t_role where rno in (select rno from t_user_role where uno=#{uno})";
+        JdbcFront jf = new JdbcFront();
+        List<Role> roles = jf.selectList(sql, Role.class, uno);
+        return roles;
+    };
+    //删除
+    public void delRole(Integer uno){
+        String sql = "delete from t_user_role where uno=#{uno}";
+        JdbcFront jf = new JdbcFront();
+        jf.delete(sql,uno);
+    }
+    //添加
+    public void addRole(Map<String,Object> map){
+        String sql = "insert into t_user_role values(#{uno},#{rno})";
+        JdbcFront jf = new JdbcFront();
+        jf.insert(sql,map);
+    }
+//    //修改
+//    public void setRole(Integer uno,String rnos){
+//
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void saveUser(Role role) {

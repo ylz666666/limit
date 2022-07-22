@@ -12,6 +12,15 @@ public interface RoleDao {
 
     //过滤用户信息
     public List<Role> findRoleByPageAndFilter(Map<String,Object> param) ;
+    //查找未分配的角色
+     List<Role> findUnlink(Integer uno);
+
+    List<Role> findlink(Integer uno);
+
+    public void delRole(Integer uno);
+    public void addRole(Map<String,Object> map);
+    //修改角色信息
+    //void setRole(Integer uno,String rnos);
 
     //新增用户
     void saveUser(Role role);

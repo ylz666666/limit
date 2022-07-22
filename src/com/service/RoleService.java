@@ -14,6 +14,23 @@ public interface RoleService {
     //新增
     void saveUser(Role role);
 
+    //查找未分配的角色
+     List<Role> findUnlink(Integer uno);
+
+     List<Role> findlink(Integer uno);
+
+    void setRole(Integer uno,String rnos);
+
+
+
+
+
+
+
+
+
+
+
 
     //删除
     void del(Integer rno);
