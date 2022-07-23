@@ -36,7 +36,7 @@ public class FnServiceImpl implements FnService {
     }
 
     //设计一个方法 把得到的所有数据组装成一个新的集合
-    private List<Fn> findNew(List<Fn> fns,int pno){//递归方法
+    public List<Fn> findNew(List<Fn> fns,int pno){//递归方法
         List<Fn> newFns = new ArrayList();
         for (Fn newFn : fns) {
             if(newFn.getPno()==pno){//从根菜单开始
@@ -69,5 +69,11 @@ public class FnServiceImpl implements FnService {
     }
     public List<Integer> getFnos(Integer rno){
         return dao.getFnos(rno);
+    }
+    public List<Fn> getMemu(Integer uno){
+        return dao.getMemu(uno);
+    }
+    public List<Fn> getButton(Integer fno){
+        return null;
     }
 }

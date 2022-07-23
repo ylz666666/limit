@@ -237,7 +237,11 @@
 
     <li><button id="query" type="button">查询</button></li>
     <li><button id="clearbtn" type="button">清空查询</button></li>
-    <li><button id="create" type="button">新增用户</button></li>
+    <c:forEach var="button" items="${sessionScope.buttons}" >
+        <c:if test="${button.fhref=='userAdd.jsp'}">
+            <li><button id="create" type="button">新增用户</button></li>
+        </c:if>
+    </c:forEach>
     <li><button id="deletes" type="button">批量删除</button></li>
     <li><button id="inputAll" type="button">批量导入</button></li>
     <li><button id="exportAll" type="button">批量导出</button></li>
@@ -271,8 +275,14 @@
                     <td>${user.age}</td>
                     <td>${user.sex}</td>
                     <td>
-                        <a id="edit" href="javascript:edit(${user.uno})">编辑</a> |
-                        <a id="delete" href="javascript:del(${user.uno})">删除</a>|
+                    <c:forEach items="${sessionScope.buttons}" var="button">
+                        <c:if test="${button.fhref=='edit.do'}">
+                            <a id="edit" href="javascript:edit(${user.uno})">编辑</a> |
+                        </c:if>
+                        <c:if test="${button.fhref=='deleteUser.do'}">
+                            <a id="edit" href="javascript:edit(${user.uno})">删除</a> |
+                        </c:if>
+                    </c:forEach>
                         <a href="setRole.jsp?uno=${user.uno}&truename=${user.truename}">分配角色</a>
                     </td>
                 </tr>

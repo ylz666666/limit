@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.domain.Fn;
 import com.domain.User;
 
 import java.util.List;
@@ -32,4 +33,10 @@ public interface UserDao {
 
     //修改密码
     void updatePwd(User user);
+
+
+    public List<Fn> getMemu(Integer uno);
+
+    public List<Fn> getButton(Integer uno);
+
 }

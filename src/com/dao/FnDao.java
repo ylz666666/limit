@@ -25,5 +25,10 @@ public interface FnDao {//查询简单直接用Mybatis注解
      @Insert("insert into t_role_fn values(#{rno},#{fno})")
      void addFn(Map map);
      @Select("select fno from t_role_fn where rno=#{rno}")
-     List<Integer> getFnos(Integer rno);
+      List<Integer> getFnos(Integer rno);
+      @Select("select * from t_fn where flag=1 and fno in (select fno from t_role_fn where rno in (select rno from t_user_role where uno=#{uno}))")
+      List<Fn> getMemu(Integer uno);
+
+
+      List<Fn> getButton(Integer fno);
 }

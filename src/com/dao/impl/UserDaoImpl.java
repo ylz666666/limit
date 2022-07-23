@@ -1,6 +1,7 @@
 package com.dao.impl;
 
 import com.dao.UserDao;
+import com.domain.Fn;
 import com.domain.User;
 import jdbc.JdbcFront;
 import mymvc.RequestMapping;
@@ -136,6 +137,18 @@ public class UserDaoImpl implements UserDao {
         String sql = "update t_user set upass=#{upass} where uno=#{uno}";
         JdbcFront jf = new JdbcFront();
         int update = jf.update(sql,user);
+    }
+
+    public List<Fn> getMemu(Integer uno){
+        String sql = "select * from t_fn where flag=1 and fno in (select fno from t_role_fn where rno in (select rno from t_user_role where uno=#{uno}))";
+        JdbcFront jf = new JdbcFront();
+        return  jf.selectList(sql,Fn.class,uno);
+    }
+
+    public List<Fn> getButton(Integer uno){
+        String sql = "select * from t_fn where flag=2 and fno in (select fno from t_role_fn where rno in (select rno from t_user_role where uno=#{uno}))";
+        JdbcFront jf = new JdbcFront();
+        return  jf.selectList(sql,Fn.class,uno);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.service;
 
+import com.domain.Fn;
 import com.domain.PageInfo;
 import com.domain.User;
 
@@ -34,5 +35,9 @@ public interface UserService {
 
     //修改密码
     void updatePwd(User user);
+
+    public List<Fn> getMemu(Integer uno);
+
+    List<Fn> getButton(Integer uno);
 
 }

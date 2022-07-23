@@ -79,7 +79,7 @@
                         <td>\${roleList[i].rname}</td>
                         <td>\${roleList[i].description}</td>
                          <td><a href="">编辑</a> |
-                  <a href="">删除</a>| <a href="setFn.jsp?rno=\${roleList[i].rno}&rname=\${roleList[i].rname}">分配功能</a></td>
+                        <a href="">删除</a>| <a href="setFn.jsp?rno=\${roleList[i].rno}&rname=\${roleList[i].rname}">分配功能</a></td>
 
                     </tr>`
                 }

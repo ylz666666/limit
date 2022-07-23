@@ -1,8 +1,11 @@
 package com.action;
 
+import com.domain.Fn;
 import com.domain.PageInfo;
 import com.domain.User;
+import com.service.FnService;
 import com.service.UserService;
+import com.service.impl.FnServiceImpl;
 import com.service.impl.UserServiceImpl;
 import com.sun.deploy.net.HttpRequest;
 import mymvc.ModelAndView;
@@ -31,17 +34,28 @@ import java.util.Map;
 public class UserAction {
 
     private UserService service = UserServiceImpl.getService() ;
+    private FnServiceImpl fnService = FnServiceImpl.getService();
     @RequestMapping("login.do")
-    public String login(@RequestParam("uname") String uname , @RequestParam("upass") String upass, HttpServletRequest req) throws UnsupportedEncodingException {
+    public String login(@RequestParam("uname") String uname , @RequestParam("upass") String upass,HttpServletRequest req) throws UnsupportedEncodingException {
         req.setCharacterEncoding("UTF-8");
         User user = service.checkLogin(uname,upass) ;
         if(user == null){
             //登录失败
             return "redirect:index.jsp?flag=9" ;
         }else{
+            //菜单列表
+            List<Fn> list  = service.getMemu(user.getUno());
+            List<Fn> menus = fnService.findNew(list, -1);
+            //按钮
+            List<Fn> buttons = service.getButton(user.getUno());
+            System.out.println("按钮"+buttons);
+
             //登录成功
             //登录成功的信息装入session缓存
             req.getSession().setAttribute("loginUser",user);
+            //菜单和按钮存入
+            req.getSession().setAttribute("menus",menus);
+            req.getSession().setAttribute("buttons",buttons);
             return "redirect:main.jsp" ;
         }
     }
@@ -279,5 +293,18 @@ public class UserAction {
         service.updatePwd(user);
         return "修改密码成功";
     }
+
+//    //查询菜单
+    @RequestMapping("getMemu.do")
+    public List<Fn> getMemu(HttpServletRequest request){
+        return (List<Fn>) request.getSession().getAttribute("menus");
+    }
+
+    //查询按钮
+    @RequestMapping("getButton.do")
+    public List<Fn> getButton(HttpServletRequest request){
+        return (List<Fn>)request.getSession().getAttribute("buttons");
+    }
+
 
 }

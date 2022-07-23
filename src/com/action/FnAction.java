@@ -49,4 +49,5 @@ public class FnAction {
     public List<Integer> getFnos(@RequestParam("rno") Integer rno){
         return service.getFnos(rno);
     }
+
 }

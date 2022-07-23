@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.dao.UserDao;
 import com.dao.impl.UserDaoImpl;
+import com.domain.Fn;
 import com.domain.PageInfo;
 import com.domain.User;
 import com.service.UserService;
@@ -12,6 +13,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -97,6 +99,13 @@ public class UserServiceImpl implements UserService {
     }
     public void updatePwd(User user){
        dao.updatePwd(user);
+    }
 
+    public List<Fn> getMemu(Integer uno){
+
+        return dao.getMemu(uno);
+    }
+    public List<Fn> getButton(Integer uno){
+        return dao.getButton(uno);
     }
 }

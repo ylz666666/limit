@@ -11,4 +11,6 @@ public interface FnService {
     void fnUpdate(Fn fn);
     public void setFn(Integer rno,String fnos);
     public List<Integer> getFnos(Integer rno);
+    public List<Fn> getMemu(Integer fno);
+    public List<Fn> getButton(Integer fno);
 }
