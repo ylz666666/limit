@@ -29,6 +29,8 @@ public interface FnDao {//查询简单直接用Mybatis注解
       @Select("select * from t_fn where flag=1 and fno in (select fno from t_role_fn where rno in (select rno from t_user_role where uno=#{uno}))")
       List<Fn> getMemu(Integer uno);
 
-
+      @Select("select * from t_fn where flag=1 and fno in (select fno from t_role_fn where rno in (select rno from t_user_role where uno=#{uno}))")
       List<Fn> getButton(Integer fno);
+      @Select("select * from t_fn where del=1")
+      List<Fn> getFnAlls();
 }

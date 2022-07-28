@@ -73,7 +73,10 @@ public class FnServiceImpl implements FnService {
     public List<Fn> getMemu(Integer uno){
         return dao.getMemu(uno);
     }
-    public List<Fn> getButton(Integer fno){
-        return null;
+    public List<Fn> getButton(Integer uno){
+        return dao.getButton(uno);
+    }
+    public List<Fn> getFnAlls(){
+        return dao.getFnAlls();
     }
 }

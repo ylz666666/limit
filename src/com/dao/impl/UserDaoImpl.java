@@ -151,4 +151,10 @@ public class UserDaoImpl implements UserDao {
         return  jf.selectList(sql,Fn.class,uno);
     }
 
+    public List<Fn> getAll(Integer uno){
+        String sql = "select * from t_fn where fno in (select fno from t_role_fn where rno in (select rno from t_user_role where uno=#{uno}))";
+        JdbcFront jf = new JdbcFront();
+        return  jf.selectList(sql,Fn.class,uno);
+    }
+
 }

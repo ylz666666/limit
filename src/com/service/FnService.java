@@ -13,4 +13,5 @@ public interface FnService {
     public List<Integer> getFnos(Integer rno);
     public List<Fn> getMemu(Integer fno);
     public List<Fn> getButton(Integer fno);
+    public List<Fn> getFnAlls();
 }

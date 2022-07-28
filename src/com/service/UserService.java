@@ -40,4 +40,6 @@ public interface UserService {
 
     List<Fn> getButton(Integer uno);
 
+    public List<Fn> getAll(Integer uno);
+
 }

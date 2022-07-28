@@ -39,4 +39,6 @@ public interface UserDao {
 
     public List<Fn> getButton(Integer uno);
 
+    public List<Fn> getAll(Integer uno);
+
 }

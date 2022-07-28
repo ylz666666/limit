@@ -45,10 +45,19 @@ public class UserAction {
         }else{
             //菜单列表
             List<Fn> list  = service.getMemu(user.getUno());
+            //处理后的所有功能
             List<Fn> menus = fnService.findNew(list, -1);
+
+            //没有处理的所有功能
+            List<Fn> fns = fnService.getFnAlls();
+            //获取所有未处理自己的功能
+            List<Fn> getAlls = service.getAll(user.getUno());
+            System.out.println("getAlls"+getAlls+"99999");
+
             //按钮
             List<Fn> buttons = service.getButton(user.getUno());
-            System.out.println("按钮"+buttons);
+
+
 
             //登录成功
             //登录成功的信息装入session缓存
@@ -56,6 +65,8 @@ public class UserAction {
             //菜单和按钮存入
             req.getSession().setAttribute("menus",menus);
             req.getSession().setAttribute("buttons",buttons);
+            req.getSession().setAttribute("getAlls",getAlls);
+            req.getSession().setAttribute("getFnAlls",fns);
             return "redirect:main.jsp" ;
         }
     }

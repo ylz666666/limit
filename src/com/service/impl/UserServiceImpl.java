@@ -108,4 +108,9 @@ public class UserServiceImpl implements UserService {
     public List<Fn> getButton(Integer uno){
         return dao.getButton(uno);
     }
+
+    public List<Fn> getAll(Integer uno){
+        return dao.getAll(uno);
+    }
+
 }

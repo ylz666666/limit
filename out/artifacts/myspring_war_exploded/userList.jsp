@@ -227,7 +227,6 @@
     <li><input id="unoBtn" placeholder="输入编号" value="${requestScope.uno}"/></li>
     <li><input id="unameBtn" placeholder="输入名称" value="${requestScope.uname}"/></li>
     <li>
-
                 <select id="selectSex">
                     <option value="">=性别=</option>
                     <option>男</option>
